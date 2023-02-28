@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Projeto Final CC50</title>
+
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <navbar>
+                <ul id="navbar">
+                    <li><a href="/">Home</a></li>
+                    <!--<li><a href="/all">Registre novos produtos</a></li>-->
+                    <li><a href="/tobuy">Lista de compras</a></li>
+                </ul>
+            </navbar>
+        </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+
+
+</html>

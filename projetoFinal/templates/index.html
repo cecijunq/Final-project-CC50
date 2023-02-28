@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div id="index-all">
+            <div id="div-index">
+                <h1>Tabela de comparação de preços</h1>
+                <p>Digite no campo abaixo o produto que você gostaria de consultar o preço</p>
+
+                <form action="/" method="post" id="form_index">
+                    <select name="search">
+                        <option disabled selected value="">Produto</option>
+                        <option value="all">TODOS</option>
+                        {% for item in items %}
+                            <option value="{{ item.product }}">{{ item.product }}</option>
+                        {% endfor %}
+                    </select>
+                    <!--<input id="input_search" type="text" name="search" autocomplete="off" placeholder="Pesquise aqui um produto">-->
+                    <button type="submit">Pesquisar</button>
+                </form>
+
+
+                <table id="table_idx">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Marca</th>
+                            <th>Mercado</th>
+                            <th>Endereço</th>
+                            <th>PREÇO</th>
+                        </tr>
+
+                        <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.product }}</td>
+                                    <td>{{ product.brand }}</td>
+                                    <td>{{ product.market }}</td>
+                                    <td>{{ product.address }}</td>
+                                    <td>{{ product.price }}</td>
+                                </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+
+            <div id="div_all_container">
+                <h1>Registro de produtos</h1>
+                <p>Registre aqui os preços dos produtos que você pesquisou e onde foi</p>
+                <div id="div_all">
+                    <form action="/all" method="post" id="form_all">
+                        <input type="text" autocomplete="off" autofocus name="product" placeholder="Nome do produto">
+                        <input type="text" autocomplete="off" name="brand" placeholder="Marca do produto">
+                        <input type="text" autocomplete="off" name="market" placeholder="Mercado">
+                        <input type="text" autocomplete="off" name="address" placeholder="Endereço do mercado">
+                        <input type="number" step="0.01" autocomplete="off" name="price" placeholder="Preço do produto">
+                        <button type="submit">Adicionar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

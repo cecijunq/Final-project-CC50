@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 class="title_tobuy">Lista de compras</h1>
+    <p class="title_tobuy">Registre aqui todos os produto que você precisa comprar e a quantidade</p>
+
+    <div>
+        <form action="/tobuy" method="post" id="form_tobuy">
+            <input autofocus autocomplete="off" type="text" name="tobuy" placeholder="Produto">
+            <input autocomplete="off" type="number" name="quantity" placeholder="Quantidade">
+            <button type="submit">Adicionar</button>
+
+        </form>
+    </div>
+
+    <form action="/todelete" method="post" id="form_tobuy">
+        <input name="todelete" type="text" autocomplete="off" placeholder="Alimento para tirar da lista">
+        <button>Deletar</button>
+    </form>
+
+    <table id="table_tobuy">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </ul>
+
+
+{% endblock %}
